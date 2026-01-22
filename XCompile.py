@@ -55,6 +55,11 @@ def XComposeSequence(s, target):
 	return seq
 
 sequences = {}
+if len(sys.argv) > 1 and sys.argv[1] == "--include-global-compose":
+	print("# Load from gloabl XCompose File")
+	print('include "%L"')
+	print('')
+
 while True:
 	try: line = input()
 	except EOFError: break
