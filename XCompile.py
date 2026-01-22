@@ -46,6 +46,9 @@ def XComposeSequence(s, target):
 	for c in s:
 		if c in XComposeNames:
 			seq += "<" + XComposeNames[c] + "> "
+		elif c == "⋄": #special multikey modifier
+			# insert using MULTI < >
+			seq += "<Multi_Key> "
 		else:
 			seq += "<" + c + "> "
 	seq += ": \"" + target + "\""
