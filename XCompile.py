@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # coding=utf-8
 import sys
 
@@ -53,14 +53,14 @@ def XComposeSequence(s, target):
 
 sequences = {}
 while True:
-	try: line = raw_input().decode("utf-8");
+	try: line = input()
 	except EOFError: break
 	if line == "" or line[0] == "#":
-		print line.encode("utf-8")
+		print(line)
 		continue
 	target, sequence = line.split("\t", 2)
-	for s in sequences.iterkeys():
+	for s in sequences:
 		if s.startswith(sequence) or sequence.startswith(s):
-			sys.stderr.write(("WARNING: sequence \"" + sequence + "\" for \"" + target + "\" clashes with previous sequence \"" + s + "\" for \"" + sequences[s]+"\"\n").encode("utf-8"))
+			sys.stderr.write(("WARNING: sequence \"" + sequence + "\" for \"" + target + "\" clashes with previous sequence \"" + s + "\" for \"" + sequences[s]+"\"\n"))
 	sequences[sequence] = target
-	print XComposeSequence(sequence, target).encode("utf-8")
+	print(XComposeSequence(sequence, target))
